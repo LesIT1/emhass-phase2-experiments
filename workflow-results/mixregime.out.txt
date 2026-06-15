@@ -1,0 +1,18 @@
+CONTROL determinism: 0.00000000 (must be 0)
+
+MIXED regimes (aft_sd drawn per day from [0.0, 0.15, 0.3, 0.45]), 100 days
+controller     mean      p90      p95    worst
+P1@0.0       1.9298   2.9771   3.3017   4.2575
+P1@0.4       1.8363   2.9441   3.1229   3.7606
+P1@0.6       1.8085   2.8984   3.0772   3.5980
+P1@0.8       1.7895   2.9128   3.0758   3.4504
+P1@1.0       1.7781   2.8443   3.0902   3.2658
+P2           1.7717   2.8404   2.9958   3.2499
+
+best fixed-bias Phase1 by mean = P1@1.0; by p95 = P1@0.8
+P2 vs P1@1.0 (best mean): mean +0.36%  p95 +3.05%  (+ = P2 better)
+P2 vs P1@0.8 (best p95):  mean +0.99%  p95 +2.60%
+
+Read: if the SAME fixed bias is best on both mean and p95 AND ties P2, a fixed conservative
+deterministic plan suffices. If P2 beats every fixed bias (esp. on p95) because no single bias
+is right for both confident and uncertain days, that is Phase 2's adaptivity earning its keep.

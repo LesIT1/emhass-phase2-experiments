@@ -56,6 +56,8 @@ uv run --with pulp --with numpy run_all.py
 
 CBC is deterministic with the fixed seeds used here, so a faithful re-run reproduces the committed `workflow-results/` outputs; `git diff` after a run shows any divergence.
 
+**Reproducibility scope.** The 9-experiment battery and the three follow-up drivers (`wf_extbias`, `wf_mixregime`, `wf_adaptbias`) have their raw stdout committed under `workflow-results/` and reproduce deterministically. `FINDINGS.md` plus `spike.py` / `sim.py` / `sim_closedloop.py` are the earlier **exploratory lineage**: the numbers are quoted in that document, but those scripts were iterated in place during the work, so a single re-run reproduces only each script's final variant, not every section of the narrative. The authoritative, fully-backed record is the workflow battery plus the three follow-ups.
+
 ## Layout
 
 ```

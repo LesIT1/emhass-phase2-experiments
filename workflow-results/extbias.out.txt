@@ -1,0 +1,18 @@
+CONTROL determinism: repeat run diff = 0.00000000 (must be 0)
+
+closed-loop, aft_sd=0.3, 80 days
+controller     mean      p90      p95    worst
+P1@0.0       1.8007   2.8668   3.7552   4.3967
+P1@0.6       1.6678   2.7426   3.2697   3.7129
+P1@0.8       1.6420   2.7545   3.2748   3.5304
+P1@0.9       1.6323   2.7335   3.2164   3.4288
+P1@1.0       1.6250   2.7292   3.0791   3.4078
+P2           1.6264   2.7327   3.0710   3.4926
+
+Phase1 means by bias: 0.0=1.8007, 0.6=1.6678, 0.8=1.6420, 0.9=1.6323, 1.0=1.6250
+best Phase1 by mean = P1@1.0; by p95 = P1@1.0
+P2 vs P1@1.0 (best mean): mean -0.09%  p95 +0.26%  (+ = P2 better)
+P2 vs P1@1.0 (best p95): mean -0.09%  p95 +0.26%
+
+Read: if Phase1 mean keeps falling to bias=1.0, the optimum is at/above the ceiling and
+Phase 2's mean edge vanishes; the question is whether P2 still beats the BEST bias on p95.

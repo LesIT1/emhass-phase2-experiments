@@ -1,0 +1,18 @@
+CONTROL adapt_k0 == naive: diff 0.00000000 (must be 0)
+
+MIXED regimes, 80 days
+controller      mean      p90      p95    worst
+adapt_k0.0    1.9602   2.9561   3.2709   4.2575
+adapt_k0.75   1.8883   2.9606   3.1307   3.6179
+adapt_k1.5    1.8419   2.9078   3.1274   3.2658
+fix@0.8       1.8161   2.9207   3.1256   3.4504
+fix@1.0       1.8042   2.9304   3.1274   3.2658
+P2            1.7961   2.8894   3.0905   3.2499
+
+best non-P2 by mean = fix@1.0; by p95 = fix@0.8
+P2 vs fix@1.0: mean +0.45%  p95 +1.18%  (+ = P2 better)
+P2 vs fix@0.8: mean +1.10%  p95 +1.12%
+
+Read: if an adaptive-bias deterministic plan matches P2 on mean AND p95, the stochastic
+tree is redundant and the cheap Solcast-style adaptive bias is the answer. If P2 still leads
+the p95, the tree adds tail value the scalar adaptive bias cannot.
