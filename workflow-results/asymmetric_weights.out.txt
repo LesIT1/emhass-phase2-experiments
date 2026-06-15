@@ -1,0 +1,23 @@
+================================================================
+Experiment: asymmetric_weights
+Seed=42  Days=80  aft_sd=0.3
+================================================================
+
+[CONTROL] zero-spread stochastic == deterministic baseline ...
+  Control PASSED: max |stoc(spread=0) - det| = 0.000000 AUD over 5 days
+
+[EXPERIMENT] Running 80 days x 3 weight sets ...
+
+--- Results table ---
+Label    Weights (lo/mid/hi)        Mean (AUD)    P95 (AUD)  Worst (AUD)
+------------------------------------------------------------------------
+sym      [0.30,0.40,0.30]               1.7433       3.2067       3.7679
+tilt1    [0.45,0.40,0.15]               1.7313       3.2067       3.5480
+tilt2    [0.60,0.30,0.10]               1.7313       3.2067       3.5480
+
+--- Deltas vs symmetric baseline (sym) ---
+Label        dMean%      dP95%    dWorst%
+tilt1         -0.69       0.00      -5.84
+tilt2         -0.69       0.00      -5.84
+
+[DONE] Results written to workflow-results/asymmetric_weights.result.json

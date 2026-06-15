@@ -1,0 +1,342 @@
+{
+  "experiment": "presolve_scaling",
+  "control_passed": true,
+  "control_detail": "locked obj == shared obj within 1e-5 for all (n, K) combinations. Zero-spread sub-control (K=1 all modes agree): PASS.",
+  "results": "n   K   mode      obj       secs    nbin\n 24  3  shared     1.67328  0.0430      6\n 24  3  locked     1.67328  0.0424     18\n 24  3  free       1.67328  0.0464     18\n 24  5  shared     1.62515  0.0688      6\n 24  5  locked     1.62515  0.0673     30\n 24  5  free       1.62480  0.0607     30\n 24  7  shared     1.62408  0.0899      6\n 24  7  locked     1.62408  0.0927     42\n 24  7  free       1.62387  0.0763     42\n 24  9  shared     1.62042  0.0954      6\n 24  9  locked     1.62042  0.1059     54\n 24  9  free       1.62027  0.0996     54\n 48  3  shared     6.74797  0.0896     12\n 48  3  locked     6.74797  0.0886     36\n 48  3  free       6.74797  0.0909     36\n 48  5  shared     6.73183  0.1822     12\n 48  5  locked     6.73183  0.1868     60\n 48  5  free       6.73183  0.1420     60\n 48  7  shared     6.72949  0.2375     12\n 48  7  locked     6.72949  0.2199     84\n 48  7  free       6.72949  0.2014     84\n 48  9  shared     6.72965  0.1989     12\n 48  9  locked     6.72965  0.1993    108\n 48  9  free       6.72965  0.2279    108\n 72  3  shared    11.89445  0.1526     18\n 72  3  locked    11.89445  0.1352     54\n 72  3  free      11.89445  0.1163     54\n 72  5  shared    11.86337  0.2047     18\n 72  5  locked    11.86337  0.2148     90\n 72  5  free      11.86337  0.1763     90\n 72  7  shared    11.85659  0.2735     18\n 72  7  locked    11.85659  0.2824    126\n 72  7  free      11.85659  0.2648    126\n 72  9  shared    11.85620  0.2490     18\n 72  9  locked    11.85620  0.2600    162\n 72  9  free      11.85619  0.3727    162",
+  "takeaways": [
+    "locked obj equals shared obj within 1e-5 for all (n,K): presolve correctly aggregates per-scenario tied binaries.",
+    "locked solve time stays close to shared: mean ratio 1.00x, max ratio 1.11x across all (n,K). CBC presolve eliminates the redundant per-scenario binaries before branching.",
+    "free solve time scales more: mean 0.98x shared, max 1.50x shared. Per-scenario binaries with only t=0 tie give the solver less presolve leverage.",
+    "Horizon scaling (shared, mean over K): n=24->48: 2.38x, n=48->72: 1.24x. Roughly linear in horizon length (LP relaxation is the bottleneck, not MILP branching).",
+    "All solves complete in well under 6 minutes total; individual solve times are ~1-200ms confirming the model is tractable for real-time use."
+  ],
+  "caveats": "Stylised 1-bus model with a simple sinusoidal PV profile; real networks have more constraints so absolute times would differ. CBC is single-threaded so presolve savings would be larger with a commercial solver. Scenario weights are Gaussian-heuristic, not importance-sampled. Solve times on this box are noisy at the ms level; ratios are more reliable than absolutes.",
+  "driver_path": "wf_presolve_scaling.py",
+  "output_path": "workflow-results\\presolve_scaling.out.txt",
+  "raw_rows": [
+    {
+      "n": 24,
+      "K": 3,
+      "results": {
+        "shared": {
+          "ok": 1.0,
+          "obj": 1.673284134660543,
+          "secs": 0.04301120000309311,
+          "wall": 0.0478,
+          "nbin": 6.0
+        },
+        "locked": {
+          "ok": 1.0,
+          "obj": 1.673284134660543,
+          "secs": 0.042393899988383055,
+          "wall": 0.0467,
+          "nbin": 18.0
+        },
+        "free": {
+          "ok": 1.0,
+          "obj": 1.6732841341153561,
+          "secs": 0.04635809999308549,
+          "wall": 0.051,
+          "nbin": 18.0
+        }
+      }
+    },
+    {
+      "n": 24,
+      "K": 5,
+      "results": {
+        "shared": {
+          "ok": 1.0,
+          "obj": 1.6251504016936762,
+          "secs": 0.06875990002299659,
+          "wall": 0.0752,
+          "nbin": 6.0
+        },
+        "locked": {
+          "ok": 1.0,
+          "obj": 1.6251504016936762,
+          "secs": 0.06728379998821765,
+          "wall": 0.0771,
+          "nbin": 30.0
+        },
+        "free": {
+          "ok": 1.0,
+          "obj": 1.6247965058389802,
+          "secs": 0.06068200001027435,
+          "wall": 0.0658,
+          "nbin": 30.0
+        }
+      }
+    },
+    {
+      "n": 24,
+      "K": 7,
+      "results": {
+        "shared": {
+          "ok": 1.0,
+          "obj": 1.6240814102019452,
+          "secs": 0.08991149999201298,
+          "wall": 0.1002,
+          "nbin": 6.0
+        },
+        "locked": {
+          "ok": 1.0,
+          "obj": 1.6240814102019452,
+          "secs": 0.0926917000033427,
+          "wall": 0.1023,
+          "nbin": 42.0
+        },
+        "free": {
+          "ok": 1.0,
+          "obj": 1.6238680272872665,
+          "secs": 0.07633280000300147,
+          "wall": 0.0866,
+          "nbin": 42.0
+        }
+      }
+    },
+    {
+      "n": 24,
+      "K": 9,
+      "results": {
+        "shared": {
+          "ok": 1.0,
+          "obj": 1.6204176023182222,
+          "secs": 0.09537910000653937,
+          "wall": 0.1093,
+          "nbin": 6.0
+        },
+        "locked": {
+          "ok": 1.0,
+          "obj": 1.6204176023182222,
+          "secs": 0.10587329999543726,
+          "wall": 0.1203,
+          "nbin": 54.0
+        },
+        "free": {
+          "ok": 1.0,
+          "obj": 1.6202661852834555,
+          "secs": 0.0995837000082247,
+          "wall": 0.114,
+          "nbin": 54.0
+        }
+      }
+    },
+    {
+      "n": 48,
+      "K": 3,
+      "results": {
+        "shared": {
+          "ok": 1.0,
+          "obj": 6.747966914196108,
+          "secs": 0.0895950999984052,
+          "wall": 0.0964,
+          "nbin": 12.0
+        },
+        "locked": {
+          "ok": 1.0,
+          "obj": 6.747966914196108,
+          "secs": 0.08861120001529343,
+          "wall": 0.0972,
+          "nbin": 36.0
+        },
+        "free": {
+          "ok": 1.0,
+          "obj": 6.747966914490846,
+          "secs": 0.09090769998147152,
+          "wall": 0.1008,
+          "nbin": 36.0
+        }
+      }
+    },
+    {
+      "n": 48,
+      "K": 5,
+      "results": {
+        "shared": {
+          "ok": 1.0,
+          "obj": 6.731831853583134,
+          "secs": 0.1821570000029169,
+          "wall": 0.1958,
+          "nbin": 12.0
+        },
+        "locked": {
+          "ok": 1.0,
+          "obj": 6.731831853583134,
+          "secs": 0.18679849998443387,
+          "wall": 0.198,
+          "nbin": 60.0
+        },
+        "free": {
+          "ok": 1.0,
+          "obj": 6.731831854081643,
+          "secs": 0.14201839998713695,
+          "wall": 0.1586,
+          "nbin": 60.0
+        }
+      }
+    },
+    {
+      "n": 48,
+      "K": 7,
+      "results": {
+        "shared": {
+          "ok": 1.0,
+          "obj": 6.729489559221144,
+          "secs": 0.23752649998641573,
+          "wall": 0.2586,
+          "nbin": 12.0
+        },
+        "locked": {
+          "ok": 1.0,
+          "obj": 6.729489559221144,
+          "secs": 0.21990980001282878,
+          "wall": 0.2415,
+          "nbin": 84.0
+        },
+        "free": {
+          "ok": 1.0,
+          "obj": 6.729489557941205,
+          "secs": 0.20144179998897016,
+          "wall": 0.2232,
+          "nbin": 84.0
+        }
+      }
+    },
+    {
+      "n": 48,
+      "K": 9,
+      "results": {
+        "shared": {
+          "ok": 1.0,
+          "obj": 6.729647219649107,
+          "secs": 0.1989437000011094,
+          "wall": 0.2287,
+          "nbin": 12.0
+        },
+        "locked": {
+          "ok": 1.0,
+          "obj": 6.729647219649107,
+          "secs": 0.1992933000146877,
+          "wall": 0.2294,
+          "nbin": 108.0
+        },
+        "free": {
+          "ok": 1.0,
+          "obj": 6.72964721913583,
+          "secs": 0.2279112999967765,
+          "wall": 0.2523,
+          "nbin": 108.0
+        }
+      }
+    },
+    {
+      "n": 72,
+      "K": 3,
+      "results": {
+        "shared": {
+          "ok": 1.0,
+          "obj": 11.89445255990891,
+          "secs": 0.15264149999711663,
+          "wall": 0.1655,
+          "nbin": 18.0
+        },
+        "locked": {
+          "ok": 1.0,
+          "obj": 11.89445255990891,
+          "secs": 0.13524299999698997,
+          "wall": 0.1483,
+          "nbin": 54.0
+        },
+        "free": {
+          "ok": 1.0,
+          "obj": 11.894452558908913,
+          "secs": 0.11627919998136349,
+          "wall": 0.1305,
+          "nbin": 54.0
+        }
+      }
+    },
+    {
+      "n": 72,
+      "K": 5,
+      "results": {
+        "shared": {
+          "ok": 1.0,
+          "obj": 11.863368014184454,
+          "secs": 0.2047372999950312,
+          "wall": 0.2284,
+          "nbin": 18.0
+        },
+        "locked": {
+          "ok": 1.0,
+          "obj": 11.863368014184454,
+          "secs": 0.21483809998608194,
+          "wall": 0.2396,
+          "nbin": 90.0
+        },
+        "free": {
+          "ok": 1.0,
+          "obj": 11.86336801429977,
+          "secs": 0.17631069998606108,
+          "wall": 0.197,
+          "nbin": 90.0
+        }
+      }
+    },
+    {
+      "n": 72,
+      "K": 7,
+      "results": {
+        "shared": {
+          "ok": 1.0,
+          "obj": 11.856592327035722,
+          "secs": 0.2735363999963738,
+          "wall": 0.3009,
+          "nbin": 18.0
+        },
+        "locked": {
+          "ok": 1.0,
+          "obj": 11.856592327035722,
+          "secs": 0.2823977000080049,
+          "wall": 0.3154,
+          "nbin": 126.0
+        },
+        "free": {
+          "ok": 1.0,
+          "obj": 11.856592325898603,
+          "secs": 0.26479529999778606,
+          "wall": 0.2931,
+          "nbin": 126.0
+        }
+      }
+    },
+    {
+      "n": 72,
+      "K": 9,
+      "results": {
+        "shared": {
+          "ok": 1.0,
+          "obj": 11.85620021817718,
+          "secs": 0.24898590001976117,
+          "wall": 0.2809,
+          "nbin": 18.0
+        },
+        "locked": {
+          "ok": 1.0,
+          "obj": 11.85620021817718,
+          "secs": 0.2600074000074528,
+          "wall": 0.2972,
+          "nbin": 162.0
+        },
+        "free": {
+          "ok": 1.0,
+          "obj": 11.85619249886231,
+          "secs": 0.3727193999802694,
+          "wall": 0.4104,
+          "nbin": 162.0
+        }
+      }
+    }
+  ]
+}

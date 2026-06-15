@@ -1,0 +1,27 @@
+Discretisation rule comparison: 80 days, aft_sd=0.3, seed=42
+=================================================================
+DET              mean=+1.8969  p95=+3.9520  p5=+0.4529  std=1.0138  done=4.00  (n=80, smult=1.0)
+A                mean=+1.7433  p95=+3.2067  p5=+0.3801  std=0.8711  done=4.00  (n=80, smult=1.0)
+B                mean=+1.7247  p95=+3.8087  p5=+0.3801  std=0.9484  done=4.00  (n=80, smult=1.283)
+C1               mean=+1.8019  p95=+3.5424  p5=+0.4183  std=0.9442  done=4.00  (n=80, smult=0.5)
+C2               mean=+1.7686  p95=+3.2442  p5=+0.3801  std=0.9066  done=4.00  (n=80, smult=0.7)
+CTRL_0spread     mean=+1.8969  p95=+3.9520  p5=+0.4529  std=1.0138  done=4.00  (n=80, smult=0.0)
+
+Total runtime: 322.0s
+
+CONTROL CHECK:
+  CTRL_0spread mean=+1.896933  DET mean=+1.896933  diff=0.00e+00  tol=1e-04  PASS=True
+  Control PASSED.
+
+Summary (lower cost = better):
+Rule     spread_mult      mean       p95        p5      std   done
+-----------------------------------------------------------------
+DET            1.000   +1.8969   +3.9520   +0.4529   1.0138   4.00
+A              1.000   +1.7433   +3.2067   +0.3801   0.8711   4.00
+B              1.283   +1.7247   +3.8087   +0.3801   0.9484   4.00
+C1             0.500   +1.8019   +3.5424   +0.4183   0.9442   4.00
+C2             0.700   +1.7686   +3.2442   +0.3801   0.9066   4.00
+
+Best mean cost: B  |  Best (lowest) p95: A
+
+Result written to workflow-results\discretisation_rule.result.json

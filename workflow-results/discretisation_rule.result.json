@@ -1,0 +1,84 @@
+{
+  "experiment": "discretisation_rule",
+  "control_passed": true,
+  "control_detail": "CTRL_0spread mean=+1.896933  DET mean=+1.896933  diff=0.00e+00  tol=1e-04  PASS=True",
+  "results": "Rule       spread_mult   mean      p95       p5        std     done\nDET            1.000   +1.8969   +3.9520   +0.4529   1.0138   4.00\nA              1.000   +1.7433   +3.2067   +0.3801   0.8711   4.00\nB              1.283   +1.7247   +3.8087   +0.3801   0.9484   4.00\nC1             0.500   +1.8019   +3.5424   +0.4183   0.9442   4.00\nC2             0.700   +1.7686   +3.2442   +0.3801   0.9066   4.00\nBest mean: B  |  Best p95: A",
+  "takeaways": [
+    "Best realized mean cost: rule B (mean=+1.7247 AUD/day).",
+    "Best tail (lowest p95): rule A (p95=+3.2067 AUD/day).",
+    "Sensitivity across A/B/C1/C2 spread_mult range: mean range 0.0772 AUD/day (4.1% of DET).",
+    "Control: zero-spread stochastic matched deterministic baseline -- LP is self-consistent.",
+    "Runtime: 361.3s for 80 days x 6 rules."
+  ],
+  "caveats": [
+    "Stylised 24-slot model; absolute AUD values are not real tariff costs.",
+    "Only 80 days -- p95 estimate has moderate sampling uncertainty.",
+    "aft_sd=0.3 represents moderate afternoon uncertainty; results may differ for other regimes.",
+    "All rules use the same true PV paths (same seed), so comparisons are paired -- noise cancels.",
+    "Pearson-Tukey spread_mult=1.283 approximates P5/P95 under Gaussian; the PV forecast distribution here is not exactly Gaussian so the rule is approximate."
+  ],
+  "driver_path": "wf_discretisation_rule.py",
+  "output_path": "workflow-results/discretisation_rule.out.txt",
+  "raw_results": {
+    "DET": {
+      "mean": 1.8969330490740108,
+      "p95": 3.9520039471704895,
+      "p5": 0.45287583308397,
+      "std": 1.0138220746944746,
+      "mean_done": 4.0,
+      "n": 80,
+      "spread_mult": 1.0,
+      "stochastic": false
+    },
+    "A": {
+      "mean": 1.743333816087415,
+      "p95": 3.2067354812713895,
+      "p5": 0.38005116448556975,
+      "std": 0.8710512158496312,
+      "mean_done": 4.0,
+      "n": 80,
+      "spread_mult": 1.0,
+      "stochastic": true
+    },
+    "B": {
+      "mean": 1.724689889502318,
+      "p95": 3.8086852342726125,
+      "p5": 0.3800511557594898,
+      "std": 0.9483979208568071,
+      "mean_done": 4.0,
+      "n": 80,
+      "spread_mult": 1.283,
+      "stochastic": true
+    },
+    "C1": {
+      "mean": 1.8018817233086886,
+      "p95": 3.542358086437215,
+      "p5": 0.4182527481359599,
+      "std": 0.9442126008652569,
+      "mean_done": 4.0,
+      "n": 80,
+      "spread_mult": 0.5,
+      "stochastic": true
+    },
+    "C2": {
+      "mean": 1.7685751669901584,
+      "p95": 3.24418502311039,
+      "p5": 0.3800511954075199,
+      "std": 0.9065787679286869,
+      "mean_done": 4.0,
+      "n": 80,
+      "spread_mult": 0.7,
+      "stochastic": true
+    },
+    "CTRL_0spread": {
+      "mean": 1.8969330490740108,
+      "p95": 3.9520039471704895,
+      "p5": 0.45287583308397,
+      "std": 1.0138220746944746,
+      "mean_done": 4.0,
+      "n": 80,
+      "spread_mult": 0.0,
+      "stochastic": true
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "experiment": "binary_value",
+  "control_passed": true,
+  "control_detail": "PASSED -- shared=1.482199 free=1.482199 diff=0.00e+00",
+  "results": "States solved: 150  skipped: 0  elapsed: 12.3s\n\nRelative gap = (shared_obj - free_obj) / |shared_obj|  (positive = free wins)\n  mean   : +0.0345%\n  median : +0.0000%\n  p90    : +0.0000%\n  p99    : +0.7324%\n  max    : +2.8774%\n  > 0.5% : 1.3% of states\n",
+  "takeaways": [
+    "Free binaries give negligible mean benefit (+0.0345%) -- the shared schedule is not a material constraint in typical conditions.",
+    "Only 1.3% of states see gap > 0.5% -- shared binary mode is operationally adequate.",
+    "p99 gap = +0.7324%, max = +2.8774% -- tail risk is bounded/low."
+  ],
+  "caveats": "Stylised 24-step 1-h model; 3 fixed-weight PV scenarios only (no load uncertainty); random cfg covers a wide but synthetic parameter space; gaps in AUD cost terms are small absolute values -- ratios can amplify when shared_obj is near zero (days with large net export).",
+  "driver_path": "wf_binary_value.py",
+  "output_path": "workflow-results/binary_value.out.txt"
+}

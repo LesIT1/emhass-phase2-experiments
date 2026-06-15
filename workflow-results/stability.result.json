@@ -1,0 +1,109 @@
+{
+  "experiment": "stability",
+  "control_passed": true,
+  "control_detail": "zero-spread-stoch cost=1.311544, done=4 | deterministic cost=1.311544, done=4 | diff=0.00e+00 tol=0.0001",
+  "n_days": 300,
+  "aft_sd": 0.3,
+  "phase1_bias": 0.2,
+  "bootstrap_reps": 2000,
+  "bootstrap_ci": 0.9,
+  "results_table": [
+    {
+      "controller": "naive",
+      "metric": "mean",
+      "est": 2.0199635776575104,
+      "ci_lo": 1.923497979157318,
+      "ci_hi": 2.1192897578360266
+    },
+    {
+      "controller": "naive",
+      "metric": "p90",
+      "est": 3.6753943897898,
+      "ci_lo": 3.3916904586945003,
+      "ci_hi": 3.8405694879067207
+    },
+    {
+      "controller": "naive",
+      "metric": "p95",
+      "est": 4.08836860506475,
+      "ci_lo": 3.8391549371373603,
+      "ci_hi": 4.159601217584
+    },
+    {
+      "controller": "phase1",
+      "metric": "mean",
+      "est": 1.958502418699682,
+      "ci_lo": 1.862234001700809,
+      "ci_hi": 2.0559295954000034
+    },
+    {
+      "controller": "phase1",
+      "metric": "p90",
+      "est": 3.4743030962417008,
+      "ci_lo": 3.217227054351,
+      "ci_hi": 3.68971285217
+    },
+    {
+      "controller": "phase1",
+      "metric": "p95",
+      "est": 3.8861185839394596,
+      "ci_lo": 3.6900094394083025,
+      "ci_hi": 3.9462611981949998
+    },
+    {
+      "controller": "phase2",
+      "metric": "mean",
+      "est": 1.8437272436302359,
+      "ci_lo": 1.7603900419302174,
+      "ci_hi": 1.9258575131990276
+    },
+    {
+      "controller": "phase2",
+      "metric": "p90",
+      "est": 3.0686419501979,
+      "ci_lo": 2.9491797835109996,
+      "ci_hi": 3.2094596885641007
+    },
+    {
+      "controller": "phase2",
+      "metric": "p95",
+      "est": 3.33385053191784,
+      "ci_lo": 3.2573011473499496,
+      "ci_hi": 3.449406941164508
+    }
+  ],
+  "def_rate": {
+    "naive": 1.0,
+    "phase1": 1.0,
+    "phase2": 1.0
+  },
+  "min_max": {
+    "naive": {
+      "min": 0.21961936589399972,
+      "max": 4.719583020000001
+    },
+    "phase1": {
+      "min": 0.21961936589399972,
+      "max": 4.291717261665001
+    },
+    "phase2": {
+      "min": 0.21961941378099967,
+      "max": 3.7679093779774
+    }
+  },
+  "savings_vs_naive": {
+    "phase1": {
+      "mean_saving": 0.06146115895782844
+    },
+    "phase2": {
+      "mean_saving": 0.17623633402727457
+    }
+  },
+  "phase2_vs_phase1": {
+    "mean_saving": 0.11477517506944612,
+    "ci_lo": 0.09290625343539449,
+    "ci_hi": 0.13707161786826316,
+    "significant": "SOLID"
+  },
+  "results_str": "Days=300  aft_sd=0.3  bootstrap CI=90%  reps=2000\n\n                                              Naive               Phase1(b=0.20)                       Phase2\n  MEAN                 +2.0200[+1.9235,+2.1193] +1.9585[+1.8622,+2.0559] +1.8437[+1.7604,+1.9259]\n  P90                  +3.6754[+3.3917,+3.8406] +3.4743[+3.2172,+3.6897] +3.0686[+2.9492,+3.2095]\n  P95                  +4.0884[+3.8392,+4.1596] +3.8861[+3.6900,+3.9463] +3.3339[+3.2573,+3.4494]\n\nDeferrable completion rates: naive=1.0000  phase1=1.0000  phase2=1.0000\n\nPhase1 saves +0.0615/day vs naive\nPhase2 saves +0.1762/day vs naive\nPhase2 vs Phase1: +0.1148/day 90%CI[+0.0929,+0.1371] -> SOLID"
+}

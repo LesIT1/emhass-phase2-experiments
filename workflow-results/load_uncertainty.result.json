@@ -1,0 +1,16 @@
+{
+  "experiment": "load_uncertainty",
+  "control_passed": true,
+  "control_detail": "PV+load with load_spread=0 vs PV-only: max|per-day cost diff| = 0.00e+00 (threshold 1e-6); all days completed deferrable (done_ok=True); 60/60 days solved. Zero load-spread reproduces the PV-only result exactly, confirming the per-scenario load wiring adds nothing when scenarios share load.",
+  "results": "60 days, seed=2026. Mean realized cost: naive=3.0353, pv_only=2.8335, pv_load=2.8050, ctrl(ls=0)=2.8335. Edge vs naive (mean per-day saving frac): pv_only=+16.340%, pv_load=+16.987%. PV+load vs PV-only: delta_mean=+0.0285 (+0.1975% of pv_only), cheaper on 28/60 days. Tail p95: naive=8.1851, pv_only=7.6225, pv_load=7.6183; worst pv_only=8.6591 -> pv_load=8.4317. edge_widens=True.",
+  "takeaways": [
+    "Phase 2 (stochastic) beats naive whether hedging PV-only (+16.340%) or PV+load (+16.987% mean per-day saving).",
+    "Adding LOAD uncertainty to the scenario set widens Phase 2's edge over naive (PV+load saves +0.1975% of pv_only cost on average, cheaper on 28/60 days).",
+    "The coupled PV+load hedge expresses something a single biased PV point cannot: a dark day is simultaneously low-PV AND high-load, two correlated shocks the controller can now reserve battery against.",
+    "CONTROL holds: load_spread=0 reproduces PV-only bit-for-bit (max|diff|=0.0e+00), so the per-scenario load plumbing is correct and any pv_load gain is real, not a bug."
+  ],
+  "caveats": "Stylised single-battery / single-deferrable model, NOT EMHASS code; numbers are directional, read as ratios not absolute AUD. The PV-load anti-correlation (k=0.6) and band widths are assumed, not fitted to real data; the magnitude of the PV+load edge scales with that assumed coupling and load_spread. The load forecast is a simple day-multiplier inference; a richer load model (weather-driven) could change the size. Reported edges are mean per-day savings as a fraction of naive cost; cost can be small or negative on high-export days, which inflates per-day ratio variance (hence ratios + tail stats rather than a single %).",
+  "driver_path": "wf_load_uncertainty.py",
+  "output_path": "workflow-results/load_uncertainty.out.txt",
+  "elapsed_s": 160.6
+}

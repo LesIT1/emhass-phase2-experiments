@@ -1,0 +1,28 @@
+========================================================================
+load_uncertainty: 60 days, seed=2026, aft_sd=0.3
+coupling k=0.6, load_day_sd=0.25, load_noise=0.2, plan load_spread=0.3
+========================================================================
+
+  controller        mean       p90       p95     worst
+  naive           3.0353    7.0211    8.1851    9.1476
+  pv_only         2.8335    6.4891    7.6225    8.6591
+  pv_load         2.8050    6.4891    7.6183    8.4317
+  ctrl(ls=0)      2.8335    6.4891    7.6225    8.6591
+
+  CONTROL: PV+load(load_spread=0) == PV-only ?  max|diff| = 0.00e+00  -> PASS
+
+  Edge vs naive (mean per-day saving as fraction of naive cost; + = cheaper):
+    PV-only : mean +16.340%   p90day +19.104%
+    PV+load : mean +16.987%   p90day +20.191%
+
+  PV+load vs PV-only (the new modelling's marginal value):
+    mean cost  pv_only 2.8335  pv_load 2.8050  delta +0.0285
+    pv_load cheaper than pv_only on 28/60 days, worse on 23
+    mean saving of pv_load over pv_only = +0.1975% of pv_only cost
+    tail: p95 pv_only 7.6225  pv_load 7.6183  worst 8.6591 -> 8.4317
+
+  Does load uncertainty WIDEN Phase 2's edge over naive?  YES (PV+load edge +16.987% vs PV-only edge +16.340%)
+
+(took 168s)
+
+wrote workflow-results/load_uncertainty.result.json

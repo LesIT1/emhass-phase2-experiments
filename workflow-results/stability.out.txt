@@ -1,0 +1,52 @@
+============================================================
+CONTROL CHECK
+============================================================
+Control passed: True
+Detail: zero-spread-stoch cost=1.311544, done=4 | deterministic cost=1.311544, done=4 | diff=0.00e+00 tol=0.0001
+
+============================================================
+MAIN EXPERIMENT
+============================================================
+Running 300 days  aft_sd=0.3  phase1_bias=0.2 ...
+  day  50/300  elapsed=102.4s
+  day 100/300  elapsed=204.6s
+  day 150/300  elapsed=304.1s
+  day 200/300  elapsed=402.4s
+  day 250/300  elapsed=514.7s
+  day 300/300  elapsed=633.6s
+Completed 300 days in 633.6s
+
+============================================================
+RESULTS
+============================================================
+Days simulated: 300  aft_sd=0.3  bootstrap_reps=2000  CI=90%
+
+Metric                          Naive   Phase1(b=0.20)         Phase2
+---------------------------------------------------------------------
+  MEAN                    +2.0200 [+1.9235,+2.1193]    +1.9585 [+1.8622,+2.0559]    +1.8437 [+1.7604,+1.9259]
+  P90                     +3.6754 [+3.3917,+3.8406]    +3.4743 [+3.2172,+3.6897]    +3.0686 [+2.9492,+3.2095]
+  P95                     +4.0884 [+3.8392,+4.1596]    +3.8861 [+3.6900,+3.9463]    +3.3339 [+3.2573,+3.4494]
+
+Min/Max cost (AUD):
+  naive        min=+0.2196  max=+4.7196
+  phase1       min=+0.2196  max=+4.2917
+  phase2       min=+0.2196  max=+3.7679
+
+Deferrable completion rate (target=1.00):
+  naive        1.0000
+  phase1       1.0000
+  phase2       1.0000
+
+Mean savings vs naive (AUD/day):
+  vs phase1       +0.0615  90% CI [+0.0535, +0.0704]  -> SOLID
+  vs phase2       +0.1762  90% CI [+0.1485, +0.2054]  -> SOLID
+  Phase2 vs Phase1     +0.1148  90% CI [+0.0929, +0.1371]  -> SOLID
+
+Statistical notes:
+  - worst-day is a single realization (max), not statistically stable
+  - CI is bootstrap 90% percentile interval over 2000 resamples
+  - stylized model: absolute AUD values not directly real-world comparable
+
+============================================================
+Writing result JSON ...
+Done -> workflow-results/stability.result.json

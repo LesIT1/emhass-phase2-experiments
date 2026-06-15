@@ -1,0 +1,69 @@
+{
+  "experiment": "miscalibration",
+  "seed": 42,
+  "n_days": 80,
+  "aft_sd": 0.3,
+  "spread_mults": [
+    0.5,
+    0.75,
+    1.0,
+    1.5,
+    2.0
+  ],
+  "weights": [
+    0.3,
+    0.4,
+    0.3
+  ],
+  "control": {
+    "description": "near-zero spread_mult=0.01 must be within 5% of deterministic",
+    "det_mean": 1.8969330490740108,
+    "zero_spread_mean": 1.8938807643767448,
+    "rel_diff_pct": 0.160906295409158,
+    "threshold_pct": 5.0,
+    "passed": true
+  },
+  "det_baseline_mean": 1.8969330490740108,
+  "results": {
+    "0.5": {
+      "spread_mult": 0.5,
+      "mean": 1.8018817233086886,
+      "p95": 3.542358086437215,
+      "n_failed": 0,
+      "n_ok": 80,
+      "elapsed": 59.99143890000414
+    },
+    "0.75": {
+      "spread_mult": 0.75,
+      "mean": 1.762268160896511,
+      "p95": 3.2191005923935045,
+      "n_failed": 0,
+      "n_ok": 80,
+      "elapsed": 61.14421420000144
+    },
+    "1.0": {
+      "spread_mult": 1.0,
+      "mean": 1.743333816087415,
+      "p95": 3.2067354812713895,
+      "n_failed": 0,
+      "n_ok": 80,
+      "elapsed": 64.30048279999755
+    },
+    "1.5": {
+      "spread_mult": 1.5,
+      "mean": 1.7154618382466889,
+      "p95": 3.1346625462725597,
+      "n_failed": 0,
+      "n_ok": 80,
+      "elapsed": 57.443501900008414
+    },
+    "2.0": {
+      "spread_mult": 2.0,
+      "mean": 1.71137324473712,
+      "p95": 3.0002644081546,
+      "n_failed": 0,
+      "n_ok": 80,
+      "elapsed": 54.24552769999718
+    }
+  }
+}

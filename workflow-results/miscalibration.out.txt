@@ -1,0 +1,33 @@
+=== Miscalibration Robustness Experiment ===
+Days: 80, aft_sd=0.3, seed=42
+Spread multipliers: [0.5, 0.75, 1.0, 1.5, 2.0]
+
+=== CONTROL: near-zero spread_mult (0.01) should approach deterministic ===
+  Deterministic mean cost:          1.8969
+  Near-zero spread mean cost:       1.8939
+  Relative difference:              0.16%
+  Control PASSED (< 5%): True
+  Control elapsed: 95.6s
+
+=== MAIN EXPERIMENT: sweep spread_mult ===
+ spread_mult   mean_cost    p95_cost  n_failed  elapsed_s
+          0.50      1.8019      3.5424         0       53.5s
+          0.75      1.7623      3.2191         0       50.8s
+          1.00      1.7433      3.2067         0       52.7s
+          1.50      1.7155      3.1347         0       48.9s
+          2.00      1.7114      3.0003         0       50.3s
+
+=== Deterministic baseline (stochastic=False, bias=0) ===
+  det mean: 1.8969  (from control run, same 80 days)
+
+=== Relative cost vs nominal (spread_mult=1.0) ===
+ spread_mult   rel_mean%    rel_p95%
+          0.50       +3.36%      +10.47%
+          0.75       +1.09%       +0.39%
+          1.00       +0.00%       +0.00%
+          1.50       -1.60%       -2.25%
+          2.00       -1.83%       -6.44%
+
+Control passed: True
+Done.
+Result written to: workflow-results\miscalibration.result.json
